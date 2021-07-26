@@ -1,4 +1,4 @@
-# blog-do-joao
+# blog-nuxjs
 
 ## Build Setup
 
