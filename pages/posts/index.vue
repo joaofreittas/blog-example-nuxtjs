@@ -12,7 +12,7 @@
         :key="post._id"  
       >
         <b-card-text>
-          {{ post.text }}
+          {{ post.text.substring(0, 80) }}
         </b-card-text>
 
         <NuxtLink :to="`/posts/${post._id}`">
@@ -49,6 +49,9 @@ export default {
     max-width: 700px;
   }
   .post{
+    margin:auto;
+    margin-top:3%;
+    width: 95%;
     border:2px solid #eee;
   }
   .post:hover {

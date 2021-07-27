@@ -3,6 +3,11 @@ const api = {
   getPosts() {
     const posts = fetch('/api/posts');
     return posts;
+  },
+
+  getPost(id) {
+    const post = fetch(`/api/posts/${id}`);
+    return post;
   }
 }
 
