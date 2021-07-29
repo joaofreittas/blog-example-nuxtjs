@@ -13,10 +13,10 @@
         >
           <h5><b>{{ post.title }}</b></h5>
           <span class="observation">
-            leitura de {{post.readMinutes}} minutos, postado em {{post.dateCreate}}
             <div> 
-              por {{ post.author }}
+              por {{ post.author }}, postado em {{post.dateCreate}}
             </div>
+            leitura de {{post.readMinutes}} minutos
           </span>
           <span class="observation"></span>
           <b-card-text
@@ -49,14 +49,14 @@ export default {
       this.loading = true;
       try{
         const posts = await (await this.$api.getPosts()).json();
-        this.posts = posts;
-        this.posts.map(post => ({
+        const postsFormatted = posts.map(post => ({
           ...post,
           dateCreate: Util.formatDate(post.dateCreate)
         }))
+        this.posts = postsFormatted;
 
       }catch(error) {
-        console.log('Erro ocorreu! ', error);
+        console.log('Erro ao listar Posts', error);
       }finally {
         this.loading = false;
       }

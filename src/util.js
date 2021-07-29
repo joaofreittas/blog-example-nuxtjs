@@ -1,6 +1,9 @@
 const formatDate = (date = new Date()) => {
-  //TO-DO: formatar a data
-  return date;
+  let data = new Date(date);
+  let dia  = data.getDate().toString().padStart(2, '0');
+  let mes  = (data.getMonth()+1).toString().padStart(2, '0');
+  let ano  = data.getFullYear();
+  return `${dia}/${mes}/${ano}`;
 }
 
 export default {

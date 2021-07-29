@@ -1,7 +1,7 @@
 <template>
   <div>
     <Home />
-    <div class="content mt-3">
+    <div class="content mt-4">
         <h4><b>Olá!</b></h4>
         <br>
         Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a 
@@ -27,11 +27,13 @@ export default {
 </script>
 <style lang="css" scoped>
 .content{
+  color:#444;
+  font-size: 15px;
   margin: auto;
   max-width: 600px;
-  margin-top:3%;
   margin:0 auto;
   padding:0 auto;
+  margin-top:3%;
   width: 95%;
 }
   
