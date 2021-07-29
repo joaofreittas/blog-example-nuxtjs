@@ -3,8 +3,12 @@
     <Menu />
 
     <section class="posts">
-
-      ola
+      <div class="text">
+        <h3>{{ post.title }}</h3>
+        <div class="info">Leitura de {{ post.readMinutes }} minutos</div>
+        <div class="info">por {{ post.author }}, postado em {{ post.dateCreate }} </div><br>
+        {{ post.text }}
+      </div>
     </section>
 
   </div>
@@ -13,7 +17,7 @@
 export default {
   data(){
     return {
-      post: []
+      post: {}
     }
   },
   mounted(){
@@ -23,9 +27,8 @@ export default {
   methods: {
     async fetchPostById(idPost) {
       const posts = await (await this.$api.getPost(idPost)).json();
-      console.log('posts :>> ', posts);
-      // const post = JSON.parse(await );
-      // console.log('post :>> ', post);
+      this.post = posts[0];
+      console.log('this.post :>> ', this.post);
     }
   }
 }
@@ -33,16 +36,14 @@ export default {
 <style lang="css" scoped>
   .posts{
     margin: auto;
-    max-width: 700px;
+    max-width: 600px;
   }
-  .post{
-    margin:auto;
-    margin-top:3%;
-    width: 95%;
-    border:2px solid #eee;
+  .text{
+    padding-top:3%;
+    padding:15px;
   }
-  .post:hover {
-    border-color: #17A2B8;
-    cursor: pointer;
+  .info{
+    color:#aaa;
+    font-size: 12px;
   }
 </style>

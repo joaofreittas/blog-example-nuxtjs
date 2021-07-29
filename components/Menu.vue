@@ -12,12 +12,12 @@
         <b-navbar-nav class="ml-auto" style="color:#eee">
           <span class="item-menu">
             <NuxtLink to="/" class="title">
-              Início
+              <b>Início</b>
             </NuxtLink>
           </span>
           <span class="item-menu">
             <NuxtLink to="/posts" class="title">
-              posts
+              <b>Posts</b>
             </NuxtLink>
           </span>
         </b-navbar-nav>    
@@ -31,10 +31,8 @@
   border:1px solid #23272B;
   margin:1% auto;
   margin-top: 0;
-  background-color:#23272B;
-  border-radius: 12px;
+  background-color:#1B1B1B;
   padding-left: 20px;
-  border-bottom: 3px solid #17A2B8;
 }
 b-nav-item{
   color:#eee;
