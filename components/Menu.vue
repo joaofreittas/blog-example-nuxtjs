@@ -20,6 +20,11 @@
               <b>Posts</b>
             </NuxtLink>
           </span>
+          <span class="item-menu">
+            <NuxtLink to="/editor" class="title">
+              <b>Write</b>
+            </NuxtLink>
+          </span>
         </b-navbar-nav>    
       </b-collapse>
     </b-navbar>

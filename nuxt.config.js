@@ -1,6 +1,6 @@
 export default {
   head: {
-    title: 'blog-do-joao',
+    title: 'blog-nuxt',
     htmlAttrs: {
       lang: 'en'
     },

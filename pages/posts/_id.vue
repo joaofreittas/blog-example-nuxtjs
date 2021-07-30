@@ -7,18 +7,21 @@
         <h4><b>{{ post.title }}</b></h4>
         <div class="info">Leitura de {{ post.readMinutes }} minutos</div>
         <div class="info">por {{ post.author }}, postado em {{ post.dateCreate }} </div><br>
-        {{ post.text }}
+        <div v-html="compiledMarkdown" />
       </div>
     </section>
 
   </div>
 </template>
 <script>
+import marked from 'marked';
 import Util from '../../src/util';
 export default {
   data(){
     return {
-      post: {},
+      post: {
+        text: '',
+      },
       loading: false,
     }
   },
@@ -37,6 +40,11 @@ export default {
       }finally{
         this.loading = false;
       }
+    }
+  },
+  computed: {
+    compiledMarkdown() {
+      return marked(this.post.text);
     }
   }
 }

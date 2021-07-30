@@ -2,6 +2,9 @@
   <div>
     <Menu />
     <Loading v-if="loading"/>
+    <div class="warn" v-if="posts.length === 0 && !loading">
+      <b>Nada há nenhum post :(</b> 
+    </div>
     <section v-else class="posts">
       <section
         v-for="post in posts"
@@ -22,7 +25,9 @@
           <b-card-text
             class="mt-3 text"
           >
-            {{ post.text.substring(0, 150) }}...
+            <div
+              v-html="post.text.substring(0, 150)" 
+            />
           </b-card-text>
         </b-card>
       </NuxtLink>
@@ -33,6 +38,7 @@
   </div>
 </template>
 <script>
+import marked from 'marked';
 import Util from '../../src/util';
 export default {
   data(){
@@ -51,6 +57,7 @@ export default {
         const posts = await (await this.$api.getPosts()).json();
         const postsFormatted = posts.map(post => ({
           ...post,
+          text: marked(post.text),
           dateCreate: Util.formatDate(post.dateCreate)
         }))
         this.posts = postsFormatted;
@@ -62,10 +69,16 @@ export default {
       }
 
     }
-  }
+  },
 }
 </script>
 <style lang="css" scoped>
+  .warn{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%) translateY(-50%);
+  }
   .text{
     color:#444;
     font-size: 15px;
