@@ -2,6 +2,12 @@
   <div>
     <Menu />
     <div class="form">
+      <b-alert 
+        :show="showError" 
+        variant="danger"
+      >
+        {{ errorMessage }}
+      </b-alert>
       <b-form-input
         v-model="title"
         placeholder="Título"
@@ -52,6 +58,8 @@ export default {
       title: '',
       author: '',
       readMinutes: null,
+      showError: false,
+      errorMessage: 'Preencha todos os campos!',
     }
   },
   computed: {
@@ -67,14 +75,25 @@ export default {
       this.text = e.target.value;
     }, 300),
     async savePost(){
+      this.showError = false;
       try{
+        if(!title || !author || !readMinutes || !text) {
+          console.log('Preencha todos os campos!');
+          this.configError(true, 'Preencha todos os campos!');
+          return;
+        }
         const { title, author, readMinutes, text } = this;
         await this.$api.addPost({
           title, author, readMinutes, text
         })
       }catch(error) {
+        this.configError(true, 'Algo de errado ocorreu!');
         console.log('Erro ao incluir Post', error);
       }
+    },
+    configError(showError, message) {
+      this.errorMessage = message;
+      this.showError = showError;
     }
   }
 }

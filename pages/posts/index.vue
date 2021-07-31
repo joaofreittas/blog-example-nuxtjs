@@ -98,10 +98,10 @@ export default {
   .posts{
     margin: auto;
     max-width: 700px;
+    padding: 13px;
   }
   .post{
     margin:auto;
-    margin-top:3%;
     width: 95%;
     border:2px solid #eee;
     border-radius: 5px;
